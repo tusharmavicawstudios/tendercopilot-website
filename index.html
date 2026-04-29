@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TenderCopilot - AI-Powered Tender Management | KnackLabs</title>
-    <meta name="description" content="TenderCopilot - Revolutionize your tender management with AI-powered automation. Save time, improve accuracy, and win more bids.">
+    <title>TenderCopilot - KnackLabs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -15,824 +14,528 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #0f172a;
-            --accent: #3b82f6;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --success: #10b981;
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
         body {
             font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: #1e293b;
-            overflow-x: hidden;
+            overflow: hidden;
+            background: #0f172a;
+            color: white;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
         }
 
-        /* Header */
-        header {
-            background: white;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
-            position: fixed;
+        .slide {
             width: 100%;
+            height: 100%;
+            display: none;
+            padding: 4rem;
+            position: absolute;
             top: 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
+            left: 0;
         }
 
-        header.scrolled {
-            box-shadow: 0 4px 30px rgba(0,0,0,0.12);
-        }
-
-        nav {
+        .slide.active {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            padding: 1rem 0;
+            animation: fadeIn 0.5s ease-in-out;
         }
 
-        .logo {
-            font-size: 1.5rem;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .slide h1 {
+            font-size: 4rem;
             font-weight: 800;
-            background: var(--gradient);
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #334155;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .cta-button {
-            background: var(--primary);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-        }
-
-        .cta-button:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 8rem 0 6rem;
-            margin-top: 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
-            opacity: 0.3;
-            animation: float 20s linear infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .hero-content {
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        .hero h1 span {
-            display: block;
-            font-size: 4.5rem;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .hero-button {
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .hero-button.primary {
-            background: white;
-            color: var(--primary);
-        }
-
-        .hero-button.primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .hero-button.secondary {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            border: 2px solid rgba(255,255,255,0.3);
-        }
-
-        .hero-button.secondary:hover {
-            background: rgba(255,255,255,0.3);
-            border-color: white;
-        }
-
-        /* Features Section */
-        .features {
-            padding: 6rem 0;
-            background: white;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
+        .slide h2 {
+            font-size: 3rem;
             font-weight: 700;
-            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            color: #f1f5f9;
+        }
+
+        .slide h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #e2e8f0;
+        }
+
+        .slide p, .slide li {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            color: #cbd5e1;
             margin-bottom: 1rem;
         }
 
-        .section-header p {
-            font-size: 1.125rem;
-            color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto;
+        .slide ul {
+            list-style: none;
+            text-align: left;
+            display: inline-block;
         }
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            border: 1px solid #e2e8f0;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .slide li {
             margin-bottom: 1.5rem;
-            font-size: 1.5rem;
+            padding-left: 2rem;
+            position: relative;
         }
 
-        .feature-card h3 {
-            font-size: 1.25rem;
+        .slide li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             font-weight: 700;
-            color: var(--secondary);
-            margin-bottom: 0.75rem;
-        }
-
-        .feature-card p {
-            color: var(--gray);
-            line-height: 1.6;
-        }
-
-        /* Benefits Section */
-        .benefits {
-            padding: 6rem 0;
-            background: var(--light);
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-
-        .benefit-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            display: flex;
-            gap: 1.5rem;
-            align-items: flex-start;
-        }
-
-        .benefit-number {
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-
-        .benefit-content h3 {
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: var(--secondary);
-            margin-bottom: 0.5rem;
-        }
-
-        .benefit-content p {
-            color: var(--gray);
-            font-size: 0.95rem;
-        }
-
-        /* Stats Section */
-        .stats {
-            padding: 4rem 0;
-            background: var(--secondary);
-            color: white;
         }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            text-align: center;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 1rem;
+            backdrop-filter: blur(10px);
         }
 
         .stat-item h3 {
             font-size: 3rem;
             font-weight: 800;
-            background: var(--gradient);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 0.5rem;
         }
 
-        .stat-item p {
-            font-size: 1rem;
-            opacity: 0.8;
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
         }
 
-        /* Use Cases Section */
-        .use-cases {
-            padding: 6rem 0;
-            background: white;
+        .feature-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 1rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item p {
+            font-size: 1.1rem;
         }
 
         .use-cases-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
+            margin: 2rem 0;
         }
 
-        .use-case-card {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            padding: 2rem;
-            border-radius: 16px;
-            transition: all 0.3s ease;
+        .use-case-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            border-left: 4px solid #667eea;
         }
 
-        .use-case-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        .use-case-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
         }
 
-        .use-case-card h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--secondary);
-            margin-bottom: 1rem;
-        }
-
-        .use-case-card ul {
-            list-style: none;
-        }
-
-        .use-case-card li {
-            padding: 0.5rem 0;
-            color: var(--gray);
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .use-case-card li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--success);
-            font-weight: 700;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 6rem 0;
-            background: var(--gradient);
-            color: white;
-            text-align: center;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta-section p {
-            font-size: 1.25rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--secondary);
-            color: white;
-            padding: 3rem 0;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-        }
-
-        .footer-section h3 {
-            font-size: 1.125rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .footer-section p, .footer-section a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            font-size: 0.95rem;
-            line-height: 1.8;
-        }
-
-        .footer-section a:hover {
-            color: white;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            margin-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.6);
-            font-size: 0.9rem;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            padding: 1rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-
-        .mobile-menu.active {
+        .navigation {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
             display: flex;
+            gap: 1rem;
+            z-index: 1000;
         }
 
-        /* Responsive Design */
+        .nav-button {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .slide-counter {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 1rem;
+        }
+
+        .logo {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            z-index: 1000;
+        }
+
+        .powered-by {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            z-index: 1000;
+        }
+
+        .keyboard-hint {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            backdrop-filter: blur(10px);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
         @media (max-width: 768px) {
-            .hero h1 {
+            .slide {
+                padding: 2rem;
+            }
+
+            .slide h1 {
                 font-size: 2.5rem;
             }
 
-            .hero h1 span {
-                font-size: 3rem;
+            .slide h2 {
+                font-size: 2rem;
             }
 
-            .hero p {
+            .slide p, .slide li {
+                font-size: 1.1rem;
+            }
+
+            .stats-grid, .features-grid, .use-cases-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .navigation {
+                bottom: 1rem;
+                right: 1rem;
+            }
+
+            .nav-button {
+                padding: 0.75rem 1rem;
                 font-size: 1rem;
             }
 
-            .nav-links {
-                display: none;
+            .logo, .powered-by {
+                top: 1rem;
+                font-size: 1rem;
             }
-
-            .mobile-menu {
-                display: none;
-            }
-
-            .benefits-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .use-cases-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-button {
-                width: 100%;
-                text-align: center;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .feature-card, .benefit-card, .use-case-card {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        .feature-card:nth-child(2), .benefit-card:nth-child(2) {
-            animation-delay: 0.1s;
-        }
-
-        .feature-card:nth-child(3), .benefit-card:nth-child(3) {
-            animation-delay: 0.2s;
-        }
-
-        .feature-card:nth-child(4), .benefit-card:nth-child(4) {
-            animation-delay: 0.3s;
-        }
-
-        /* Scroll Animation */
-        .scrolled .feature-card,
-        .scrolled .benefit-card,
-        .scrolled .use-case-card {
-            animation: fadeInUp 0.6s ease forwards;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">TenderCopilot</div>
-                <ul class="nav-links">
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#benefits">Benefits</a></li>
-                    <li><a href="#use-cases">Use Cases</a></li>
-                    <li><a href="#contact" class="cta-button">Get Started</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <div class="logo">TenderCopilot</div>
+    <div class="powered-by">Powered by KnackLabs</div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>
-                    <span>Revolutionize</span>
-                    Your Tender Management
-                </h1>
-                <p>AI-powered automation that saves time, improves accuracy, and helps you win more bids. Transform your tender process with intelligent document analysis and competitive insights.</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="hero-button primary">Request Demo</a>
-                    <a href="#features" class="hero-button secondary">Learn More</a>
+    <div class="slide-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <div class="slide-content">
+                <h1>TenderCopilot</h1>
+                <h2 style="font-size: 2rem; font-weight: 400; margin-top: -1rem; margin-bottom: 3rem;">AI-Powered Tender Management</h2>
+                <p>Revolutionize your tender management with intelligent automation</p>
+                <p style="margin-top: 2rem; font-size: 1.2rem; opacity: 0.8;">Press arrow keys or click buttons to navigate</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Problem -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>The Challenge</h2>
+                <div style="margin: 3rem 0;">
+                    <p style="font-size: 1.8rem; margin-bottom: 2rem;">Traditional tender management is:</p>
+                    <ul>
+                        <li><strong>Time-consuming</strong> - Hours spent on manual document review</li>
+                        <li><strong>Error-prone</strong> - Missed requirements and compliance issues</li>
+                        <li><strong>Inefficient</strong> - Limited visibility into competitor strategies</li>
+                        <li><strong>Costly</strong> - Lost opportunities due to poor response quality</li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <div class="section-header">
+        <!-- Slide 3: Solution -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>The Solution</h2>
+                <h3 style="margin-top: -1rem; margin-bottom: 3rem;">Meet TenderCopilot</h3>
+                <p style="font-size: 1.8rem; margin-bottom: 2rem;">An AI-powered platform that transforms how you manage tenders</p>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h3>🤖 AI Analysis</h3>
+                        <p>Automatically extracts key requirements and compliance information</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>⚡ Lightning Fast</h3>
+                        <p>Process hundreds of pages in minutes, not hours</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>📊 Smart Insights</h3>
+                        <p>Data-driven analytics to improve your win rate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Key Features -->
+        <div class="slide">
+            <div class="slide-content">
                 <h2>Powerful Features</h2>
-                <p>Everything you need to streamline your tender management process and stay ahead of the competition.</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
-                    <h3>AI-Powered Analysis</h3>
-                    <p>Automatically analyze tender documents with advanced AI that extracts key requirements, criteria, and compliance information.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Lightning Fast Processing</h3>
-                    <p>Process hundreds of pages in minutes, not hours. Get instant insights and recommendations for your bid responses.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Smart Analytics</h3>
-                    <p>Track your bid performance, analyze competitor strategies, and get data-driven insights to improve your win rate.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Enterprise Security</h3>
-                    <p>Bank-grade security with full data encryption, access controls, and compliance with industry standards.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🤝</div>
-                    <h3>Team Collaboration</h3>
-                    <p>Work seamlessly with your team on tender responses. Real-time editing, comments, and approval workflows.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📈</div>
-                    <h3>Success Tracking</h3>
-                    <p>Monitor your tender pipeline, track conversion rates, and identify opportunities for continuous improvement.</p>
-                </div>
+                <ul style="margin-top: 3rem;">
+                    <li><strong>Automated Document Analysis</strong> - AI extracts requirements, criteria, and compliance info</li>
+                    <li><strong>Real-time Collaboration</strong> - Work seamlessly with your team on bid responses</li>
+                    <li><strong>Compliance Checking</strong> - Never miss critical requirements or deadlines</li>
+                    <li><strong>Competitor Analysis</strong> - Understand the competitive landscape</li>
+                    <li><strong>Performance Analytics</strong> - Track win rates and identify improvement areas</li>
+                    <li><strong>Enterprise Security</strong> - Bank-grade security with full encryption</li>
+                </ul>
             </div>
         </div>
-    </section>
 
-    <!-- Benefits Section -->
-    <section class="benefits" id="benefits">
-        <div class="container">
-            <div class="section-header">
-                <h2>Why Choose TenderCopilot?</h2>
-                <p>Transform your tender management process and achieve better results with less effort.</p>
-            </div>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-number">1</div>
-                    <div class="benefit-content">
-                        <h3>Save 70% Time on Document Review</h3>
-                        <p>AI automatically extracts and summarizes key information, reducing manual review time dramatically.</p>
+        <!-- Slide 5: Benefits -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Tangible Benefits</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>70%</h3>
+                        <p>Time Saved on Document Review</p>
                     </div>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-number">2</div>
-                    <div class="benefit-content">
-                        <h3>Improve Win Rate by 40%</h3>
-                        <p>Data-driven insights and competitive analysis help you craft stronger, more compelling proposals.</p>
+                    <div class="stat-item">
+                        <h3>40%</h3>
+                        <p>Improvement in Win Rate</p>
                     </div>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-number">3</div>
-                    <div class="benefit-content">
-                        <h3>Reduce Compliance Risk</h3>
-                        <p>Automated compliance checking ensures you never miss critical requirements or deadlines.</p>
+                    <div class="stat-item">
+                        <h3>3x</h3>
+                        <p>More Tenders Processed</p>
                     </div>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-number">4</div>
-                    <div class="benefit-content">
-                        <h3>Scale Your Tender Operations</h3>
-                        <p>Handle more opportunities with the same team by automating repetitive tasks and workflows.</p>
+                    <div class="stat-item">
+                        <h3>99.5%</h3>
+                        <p>Compliance Accuracy</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <h3>85%</h3>
-                    <p>Time Saved</p>
-                </div>
-                <div class="stat-item">
-                    <h3>3x</h3>
-                    <p>More Tenders Processed</p>
-                </div>
-                <div class="stat-item">
-                    <h3>40%</h3>
-                    <p>Higher Win Rate</p>
-                </div>
-                <div class="stat-item">
-                    <h3>99.5%</h3>
-                    <p>Compliance Accuracy</p>
+        <!-- Slide 6: Use Cases -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Industry Solutions</h2>
+                <div class="use-cases-grid">
+                    <div class="use-case-item">
+                        <h3>🏛️ Government Contracts</h3>
+                        <p>Public sector tenders with automated compliance</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h3>🏗️ Construction</h3>
+                        <p>Technical specs and bid requirements analysis</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h3>💻 IT & Software</h3>
+                        <p>RFP/RFI automation and technical matching</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h3>🏥 Healthcare</h3>
+                        <p>Regulatory compliance and certification verification</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Use Cases Section -->
-    <section class="use-cases" id="use-cases">
-        <div class="container">
-            <div class="section-header">
-                <h2>Perfect For Every Industry</h2>
-                <p>TenderCopilot adapts to your specific industry needs and tender requirements.</p>
+        <!-- Slide 7: Why Us -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Why TenderCopilot?</h2>
+                <ul style="margin-top: 3rem;">
+                    <li><strong>Proven Results</strong> - Trusted by organizations across industries</li>
+                    <li><strong>Easy Integration</strong> - Works with your existing tools and workflows</li>
+                    <li><strong>24/7 Support</strong> - Dedicated team to ensure your success</li>
+                    <li><strong>Continuous Innovation</strong> - Regular updates with new AI capabilities</li>
+                    <li><strong>ROI Focused</strong> - Payback within months, not years</li>
+                </ul>
             </div>
-            <div class="use-cases-grid">
-                <div class="use-case-card">
-                    <h3>Government Contracts</h3>
-                    <ul>
-                        <li>Public sector tenders</li>
-                        <li>Compliance automation</li>
-                        <li>Policy requirement checks</li>
-                        <li>Deadline tracking</li>
-                    </ul>
-                </div>
-                <div class="use-case-card">
-                    <h3>Construction & Infrastructure</h3>
-                    <ul>
-                        <li>Technical specification analysis</li>
-                        <li>Bid requirement extraction</li>
-                        <li>Competitor pricing analysis</li>
-                        <li>Risk assessment</li>
-                    </ul>
-                </div>
-                <div class="use-case-card">
-                    <h3>IT & Software Services</h3>
-                    <ul>
-                        <li>RFP/RFI automation</li>
-                        <li>Technical requirement matching</li>
-                        <li>Solution architecture support</li>
-                        <li>Pricing optimization</li>
-                    </ul>
-                </div>
-                <div class="use-case-card">
-                    <h3>Professional Services</h3>
-                    <ul>
-                        <li>Consultancy tenders</li>
-                        <li>Expertise matching</li>
-                        <li>Team composition analysis</li>
-                        <li>Case study recommendations</li>
-                    </ul>
-                </div>
-                <div class="use-case-card">
-                    <h3>Manufacturing & Supply Chain</h3>
-                    <ul>
-                        <li>Supply requirement analysis</li>
-                        <li>Capability assessment</li>
-                        <li>Quality compliance checks</li>
-                        <li>Delivery feasibility</li>
-                    </ul>
-                </div>
-                <div class="use-case-card">
-                    <h3>Healthcare & Pharmaceuticals</h3>
-                    <ul>
-                        <li>Regulatory compliance</li>
-                        <li>Certification verification</li>
-                        <li>Clinical requirement analysis</li>
-                        <li>Safety standard checks</li>
-                    </ul>
+        </div>
+
+        <!-- Slide 8: Call to Action -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Ready to Transform Your Tender Process?</h2>
+                <p style="font-size: 1.8rem; margin: 2rem 0;">Join hundreds of organizations winning more bids with TenderCopilot</p>
+                <div style="margin-top: 3rem;">
+                    <p style="font-size: 1.3rem;"><strong>Contact Us:</strong></p>
+                    <p style="font-size: 1.2rem; margin-top: 1rem;">📧 contact@knacklabs.com</p>
+                    <p style="font-size: 1.2rem;">🌐 www.knacklabs.com</p>
+                    <p style="font-size: 1.2rem;">📱 +91-XXXXXXXXXX</p>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section" id="contact">
-        <div class="container">
-            <h2>Ready to Transform Your Tender Process?</h2>
-            <p>Join hundreds of organizations already winning more bids with TenderCopilot</p>
-            <a href="mailto:contact@knacklabs.com" class="hero-button primary">Schedule Your Demo</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>About TenderCopilot</h3>
-                    <p>TenderCopilot by KnackLabs is an AI-powered tender management platform that helps organizations streamline their bidding process and win more contracts.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact Us</h3>
-                    <p>Email: contact@knacklabs.com</p>
-                    <p>Website: www.knacklabs.com</p>
-                    <p>Follow us on LinkedIn and Twitter for the latest updates</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <a href="#features">Features</a><br>
-                    <a href="#benefits">Benefits</a><br>
-                    <a href="#use-cases">Use Cases</a><br>
-                    <a href="#contact">Contact</a>
+        <!-- Slide 9: Thank You -->
+        <div class="slide">
+            <div class="slide-content">
+                <h1 style="font-size: 5rem;">Thank You!</h1>
+                <p style="font-size: 1.8rem; margin-top: 2rem;">Questions? Let's discuss how TenderCopilot can help you</p>
+                <div style="margin-top: 3rem;">
+                    <p style="font-size: 1.3rem;"><strong>TenderCopilot by KnackLabs</strong></p>
+                    <p style="font-size: 1rem; margin-top: 1rem; opacity: 0.7;">Empowering organizations to win more tenders with AI</p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 TenderCopilot by KnackLabs. All rights reserved.</p>
-            </div>
         </div>
-    </footer>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation">
+        <button class="nav-button" onclick="previousSlide()">← Previous</button>
+        <button class="nav-button" onclick="nextSlide()">Next →</button>
+    </div>
+
+    <div class="slide-counter">
+        <span id="currentSlide">1</span> / <span id="totalSlides">9</span>
+    </div>
+
+    <div class="keyboard-hint">
+        Use ← → arrow keys to navigate
+    </div>
 
     <script>
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        document.getElementById('totalSlides').textContent = totalSlides;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+
+            if (n >= totalSlides) {
+                currentSlide = 0;
+            } else if (n < 0) {
+                currentSlide = totalSlides - 1;
             } else {
-                header.classList.remove('scrolled');
+                currentSlide = n;
+            }
+
+            slides[currentSlide].classList.add('active');
+            document.getElementById('currentSlide').textContent = currentSlide + 1;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight' || event.key === ' ') {
+                event.preventDefault();
+                nextSlide();
+            } else if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                previousSlide();
             }
         });
 
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+        // Touch swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
         });
 
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.feature-card, .benefit-card, .use-case-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
+        document.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
         });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                nextSlide();
+            }
+            if (touchEndX > touchStartX + 50) {
+                previousSlide();
+            }
+        }
     </script>
 </body>
 </html>
