@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TenderCopilot - KnackLabs</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,9 +13,9 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
             overflow: hidden;
-            background: #0f172a;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
         }
 
@@ -31,7 +29,7 @@
             width: 100%;
             height: 100%;
             display: none;
-            padding: 4rem;
+            padding: 3rem;
             position: absolute;
             top: 0;
             left: 0;
@@ -42,9 +40,296 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            animation: fadeIn 0.5s ease-in-out;
         }
 
+        .slide-content {
+            max-width: 1100px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Title Slide */
+        .title-slide h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .title-slide .subtitle {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .title-slide .company {
+            font-size: 1.5rem;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+
+        /* Content Slides */
+        .slide h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .slide p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .slide ul {
+            list-style: none;
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .slide li {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            padding-left: 2.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .slide li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+            color: #ffd700;
+        }
+
+        /* Icons and Emojis */
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Feature Cards */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .feature-card .icon {
+            font-size: 2.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 1rem 0;
+        }
+
+        .feature-card p {
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        /* Use Cases */
+        .use-case-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .use-case-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem 2rem;
+            border-radius: 1rem;
+            border-left: 4px solid #ffd700;
+            text-align: left;
+        }
+
+        .use-case-item h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .use-case-item p {
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .highlight-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Benefits List */
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .benefit-item {
+            text-align: left;
+        }
+
+        .benefit-item h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Navigation */
+        .navigation {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .nav-button {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .slide-counter {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-weight: 600;
+        }
+
+        .keyboard-hint {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.5rem 1.5rem;
+            border-radius: 1rem;
+            backdrop-filter: blur(10px);
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .slide {
+                padding: 2rem 1.5rem;
+            }
+
+            .title-slide h1 {
+                font-size: 3rem;
+            }
+
+            .slide h2 {
+                font-size: 1.8rem;
+            }
+
+            .slide p, .slide li {
+                font-size: 1.1rem;
+            }
+
+            .feature-grid, .stats-grid, .use-case-grid, .benefits-list {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .navigation {
+                bottom: 1rem;
+                right: 1rem;
+            }
+
+            .nav-button {
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .slide-counter {
+                bottom: 1rem;
+                left: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .keyboard-hint {
+                display: none;
+            }
+        }
+
+        /* Animations */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -56,406 +341,204 @@
             }
         }
 
-        .slide-content {
-            max-width: 1200px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .slide h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 2rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .slide h2 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: #f1f5f9;
-        }
-
-        .slide h3 {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #e2e8f0;
-        }
-
-        .slide p, .slide li {
-            font-size: 1.5rem;
-            line-height: 1.8;
-            color: #cbd5e1;
-            margin-bottom: 1rem;
-        }
-
-        .slide ul {
-            list-style: none;
-            text-align: left;
-            display: inline-block;
-        }
-
-        .slide li {
-            margin-bottom: 1.5rem;
-            padding-left: 2rem;
-            position: relative;
-        }
-
-        .slide li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #10b981;
-            font-weight: bold;
-        }
-
-        .highlight {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 700;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
-            margin: 3rem 0;
-        }
-
-        .stat-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 1rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .stat-item h3 {
-            font-size: 3rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .feature-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 1rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .feature-item h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-item p {
-            font-size: 1.1rem;
-        }
-
-        .use-cases-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .use-case-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
-            border-radius: 1rem;
-            border-left: 4px solid #667eea;
-        }
-
-        .use-case-item h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .navigation {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            display: flex;
-            gap: 1rem;
-            z-index: 1000;
-        }
-
-        .nav-button {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 1rem 1.5rem;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1.2rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .nav-button:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.05);
-        }
-
-        .slide-counter {
-            position: fixed;
-            bottom: 2rem;
-            left: 2rem;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.75rem 1.5rem;
-            border-radius: 2rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            font-size: 1rem;
-        }
-
-        .logo {
-            position: fixed;
-            top: 2rem;
-            left: 2rem;
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            z-index: 1000;
-        }
-
-        .powered-by {
-            position: fixed;
-            top: 2rem;
-            right: 2rem;
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.6);
-            z-index: 1000;
-        }
-
-        .keyboard-hint {
-            position: fixed;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.5rem 1rem;
-            border-radius: 1rem;
-            backdrop-filter: blur(10px);
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        @media (max-width: 768px) {
-            .slide {
-                padding: 2rem;
-            }
-
-            .slide h1 {
-                font-size: 2.5rem;
-            }
-
-            .slide h2 {
-                font-size: 2rem;
-            }
-
-            .slide p, .slide li {
-                font-size: 1.1rem;
-            }
-
-            .stats-grid, .features-grid, .use-cases-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .navigation {
-                bottom: 1rem;
-                right: 1rem;
-            }
-
-            .nav-button {
-                padding: 0.75rem 1rem;
-                font-size: 1rem;
-            }
-
-            .logo, .powered-by {
-                top: 1rem;
-                font-size: 1rem;
-            }
+        .slide.active {
+            animation: fadeIn 0.5s ease-in-out;
         }
     </style>
 </head>
 <body>
-    <div class="logo">TenderCopilot</div>
-    <div class="powered-by">Powered by KnackLabs</div>
-
     <div class="slide-container">
         <!-- Slide 1: Title -->
         <div class="slide active">
-            <div class="slide-content">
-                <h1>TenderCopilot</h1>
-                <h2 style="font-size: 2rem; font-weight: 400; margin-top: -1rem; margin-bottom: 3rem;">AI-Powered Tender Management</h2>
-                <p>Revolutionize your tender management with intelligent automation</p>
-                <p style="margin-top: 2rem; font-size: 1.2rem; opacity: 0.8;">Press arrow keys or click buttons to navigate</p>
+            <div class="slide-content title-slide">
+                <h1>🤖 TenderCopilot</h1>
+                <p class="subtitle">AI-Powered Tender Management</p>
+                <p class="company">Powered by KnackLabs</p>
             </div>
         </div>
 
-        <!-- Slide 2: Problem -->
+        <!-- Slide 2: What -->
         <div class="slide">
             <div class="slide-content">
-                <h2>The Challenge</h2>
-                <div style="margin: 3rem 0;">
-                    <p style="font-size: 1.8rem; margin-bottom: 2rem;">Traditional tender management is:</p>
-                    <ul>
-                        <li><strong>Time-consuming</strong> - Hours spent on manual document review</li>
-                        <li><strong>Error-prone</strong> - Missed requirements and compliance issues</li>
-                        <li><strong>Inefficient</strong> - Limited visibility into competitor strategies</li>
-                        <li><strong>Costly</strong> - Lost opportunities due to poor response quality</li>
-                    </ul>
+                <h2>🎯 What is TenderCopilot?</h2>
+                <p>An AI-powered platform that transforms how organizations manage the tendering process</p>
+                <div class="highlight-box">
+                    <p style="margin-bottom: 0;">From document analysis to bid submission, TenderCopilot automates and optimizes every step of your tender journey</p>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 3: Solution -->
+        <!-- Slide 3: Why -->
         <div class="slide">
             <div class="slide-content">
-                <h2>The Solution</h2>
-                <h3 style="margin-top: -1rem; margin-bottom: 3rem;">Meet TenderCopilot</h3>
-                <p style="font-size: 1.8rem; margin-bottom: 2rem;">An AI-powered platform that transforms how you manage tenders</p>
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <h3>🤖 AI Analysis</h3>
-                        <p>Automatically extracts key requirements and compliance information</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>⚡ Lightning Fast</h3>
-                        <p>Process hundreds of pages in minutes, not hours</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>📊 Smart Insights</h3>
-                        <p>Data-driven analytics to improve your win rate</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 4: Key Features -->
-        <div class="slide">
-            <div class="slide-content">
-                <h2>Powerful Features</h2>
-                <ul style="margin-top: 3rem;">
-                    <li><strong>Automated Document Analysis</strong> - AI extracts requirements, criteria, and compliance info</li>
-                    <li><strong>Real-time Collaboration</strong> - Work seamlessly with your team on bid responses</li>
-                    <li><strong>Compliance Checking</strong> - Never miss critical requirements or deadlines</li>
-                    <li><strong>Competitor Analysis</strong> - Understand the competitive landscape</li>
-                    <li><strong>Performance Analytics</strong> - Track win rates and identify improvement areas</li>
-                    <li><strong>Enterprise Security</strong> - Bank-grade security with full encryption</li>
+                <h2>💡 Why TenderCopilot?</h2>
+                <ul>
+                    <li><strong>Save Time:</strong> Reduce tender preparation time by up to 70%</li>
+                    <li><strong>Improve Accuracy:</strong> AI-powered analysis minimizes human error</li>
+                    <li><strong>Win More:</strong> Data-driven insights to craft winning proposals</li>
+                    <li><strong>Stay Compliant:</strong> Automated compliance checking and deadline tracking</li>
+                    <li><strong>Scale Operations:</strong> Handle more tenders with the same team</li>
                 </ul>
             </div>
         </div>
 
-        <!-- Slide 5: Benefits -->
+        <!-- Slide 4: Features -->
         <div class="slide">
             <div class="slide-content">
-                <h2>Tangible Benefits</h2>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <h3>70%</h3>
-                        <p>Time Saved on Document Review</p>
+                <h2>⚡ Key Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="icon">📄</div>
+                        <h3>Smart Document Analysis</h3>
+                        <p>AI extracts requirements, criteria, and compliance info instantly</p>
                     </div>
-                    <div class="stat-item">
-                        <h3>40%</h3>
-                        <p>Improvement in Win Rate</p>
+                    <div class="feature-card">
+                        <div class="icon">🤝</div>
+                        <h3>Team Collaboration</h3>
+                        <p>Real-time editing and approval workflows</p>
                     </div>
-                    <div class="stat-item">
-                        <h3>3x</h3>
-                        <p>More Tenders Processed</p>
+                    <div class="feature-card">
+                        <div class="icon">📊</div>
+                        <h3>Analytics Dashboard</h3>
+                        <p>Track performance and identify improvement areas</p>
                     </div>
-                    <div class="stat-item">
-                        <h3>99.5%</h3>
-                        <p>Compliance Accuracy</p>
+                    <div class="feature-card">
+                        <div class="icon">🔍</div>
+                        <h3>Competitor Analysis</h3>
+                        <p>Understand the competitive landscape</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon">⚠️</div>
+                        <h3>Risk Assessment</h3>
+                        <p>Identify and mitigate tender risks early</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon">🔒</div>
+                        <h3>Enterprise Security</h3>
+                        <p>Bank-grade security and compliance</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 6: Use Cases -->
+        <!-- Slide 5: Results -->
         <div class="slide">
             <div class="slide-content">
-                <h2>Industry Solutions</h2>
-                <div class="use-cases-grid">
+                <h2>📈 Proven Results</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">70%</div>
+                        <div class="stat-label">Time Saved</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">40%</div>
+                        <div class="stat-label">Higher Win Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3x</div>
+                        <div class="stat-label">More Tenders</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">99%</div>
+                        <div class="stat-label">Compliance Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Industries -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>🏭 Industries We Serve</h2>
+                <div class="use-case-grid">
                     <div class="use-case-item">
-                        <h3>🏛️ Government Contracts</h3>
-                        <p>Public sector tenders with automated compliance</p>
+                        <h3>🏛️ Government</h3>
+                        <p>Public sector contracts and procurement</p>
                     </div>
                     <div class="use-case-item">
                         <h3>🏗️ Construction</h3>
-                        <p>Technical specs and bid requirements analysis</p>
+                        <p>Infrastructure and development projects</p>
                     </div>
                     <div class="use-case-item">
-                        <h3>💻 IT & Software</h3>
-                        <p>RFP/RFI automation and technical matching</p>
+                        <h3>💻 Technology</h3>
+                        <p>IT services and software solutions</p>
                     </div>
                     <div class="use-case-item">
                         <h3>🏥 Healthcare</h3>
-                        <p>Regulatory compliance and certification verification</p>
+                        <p>Medical equipment and pharmaceuticals</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h3>🏭 Manufacturing</h3>
+                        <p>Industrial equipment and supply chain</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h3>🎓 Consulting</h3>
+                        <p>Professional services and advisory</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 7: Why Us -->
+        <!-- Slide 7: Benefits -->
         <div class="slide">
             <div class="slide-content">
-                <h2>Why TenderCopilot?</h2>
-                <ul style="margin-top: 3rem;">
-                    <li><strong>Proven Results</strong> - Trusted by organizations across industries</li>
-                    <li><strong>Easy Integration</strong> - Works with your existing tools and workflows</li>
-                    <li><strong>24/7 Support</strong> - Dedicated team to ensure your success</li>
-                    <li><strong>Continuous Innovation</strong> - Regular updates with new AI capabilities</li>
-                    <li><strong>ROI Focused</strong> - Payback within months, not years</li>
+                <h2>✨ Core Benefits</h2>
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <h3>🎯 Focus on Strategy</h3>
+                        <p>Spend time on winning strategies, not paperwork</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h3>📈 Data-Driven Decisions</h3>
+                        <p>Make informed choices with real-time insights</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h3>🚀 Faster Response</h3>
+                        <p>Submit higher quality proposals in less time</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h3>🤝 Better Collaboration</h3>
+                        <p>Work seamlessly with internal and external teams</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: How It Works -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>🔄 How It Works</h2>
+                <ul>
+                    <li><strong>1. Upload:</strong> Simply upload your tender documents</li>
+                    <li><strong>2. Analyze:</strong> AI extracts key requirements and criteria</li>
+                    <li><strong>3. Collaborate:</strong> Work with your team on responses</li>
+                    <li><strong>4. Optimize:</strong> Get suggestions to improve your proposal</li>
+                    <li><strong>5. Submit:</strong> Export and submit with confidence</li>
                 </ul>
             </div>
         </div>
 
-        <!-- Slide 8: Call to Action -->
+        <!-- Slide 9: Contact -->
         <div class="slide">
             <div class="slide-content">
-                <h2>Ready to Transform Your Tender Process?</h2>
-                <p style="font-size: 1.8rem; margin: 2rem 0;">Join hundreds of organizations winning more bids with TenderCopilot</p>
-                <div style="margin-top: 3rem;">
-                    <p style="font-size: 1.3rem;"><strong>Contact Us:</strong></p>
-                    <p style="font-size: 1.2rem; margin-top: 1rem;">📧 contact@knacklabs.com</p>
-                    <p style="font-size: 1.2rem;">🌐 www.knacklabs.com</p>
-                    <p style="font-size: 1.2rem;">📱 +91-XXXXXXXXXX</p>
+                <h2>📞 Get Started Today</h2>
+                <p style="font-size: 1.5rem; margin-bottom: 3rem;">Ready to transform your tender management?</p>
+                <div class="highlight-box">
+                    <h3 style="margin-bottom: 1.5rem;">Contact Us</h3>
+                    <p><strong>📧 Email:</strong> contact@knacklabs.com</p>
+                    <p><strong>🌐 Website:</strong> www.knacklabs.com</p>
+                    <p><strong>📱 Phone:</strong> +91-XXXXXXXXXX</p>
+                    <p style="margin-top: 1rem;"><strong>📍 Location:</strong> Hyderabad, India</p>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 9: Thank You -->
+        <!-- Slide 10: Thank You -->
         <div class="slide">
-            <div class="slide-content">
-                <h1 style="font-size: 5rem;">Thank You!</h1>
-                <p style="font-size: 1.8rem; margin-top: 2rem;">Questions? Let's discuss how TenderCopilot can help you</p>
-                <div style="margin-top: 3rem;">
-                    <p style="font-size: 1.3rem;"><strong>TenderCopilot by KnackLabs</strong></p>
-                    <p style="font-size: 1rem; margin-top: 1rem; opacity: 0.7;">Empowering organizations to win more tenders with AI</p>
-                </div>
+            <div class="slide-content title-slide">
+                <h1 style="font-size: 4rem;">Thank You! 🙏</h1>
+                <p class="subtitle">Questions? Let's discuss your needs</p>
+                <p class="company" style="margin-top: 2rem;">TenderCopilot by KnackLabs</p>
             </div>
         </div>
     </div>
@@ -467,11 +550,11 @@
     </div>
 
     <div class="slide-counter">
-        <span id="currentSlide">1</span> / <span id="totalSlides">9</span>
+        <span id="currentSlide">1</span> / <span id="totalSlides">10</span>
     </div>
 
     <div class="keyboard-hint">
-        Use ← → arrow keys to navigate
+        Use ← → arrow keys to navigate | Press Space for next slide
     </div>
 
     <script>
